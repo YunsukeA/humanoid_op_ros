@@ -165,7 +165,7 @@ void FilteredListener::subscription_callback(const tf2_msgs::TFMessageConstPtr& 
 		// Ignore this transform if it is too far into the future
 		const geometry_msgs::TransformStamped& tform = msg->transforms[i];
 		ros::Duration inFuture = tform.header.stamp - now;
-		if(future_ignore_ratio_ >= 0.0 && inFuture > tf2_buffer_.getCacheLength() * future_ignore_ratio_)
+		if(future_ignore_ratio_ >= 0.0 && inFuture > tf2_buffer_ptr_.getCacheLength() * future_ignore_ratio_)
 		{
 			//ROS_WARN_THROTTLE(0.2, "Ignored transforms that were too far into the future (%+.3fs)", inFuture.toSec());
 			continue;
@@ -190,7 +190,7 @@ void FilteredListener::subscription_callback(const tf2_msgs::TFMessageConstPtr& 
 			if(use_sim_time)
 			{
 				float transform_dt = (now - trans.stamp_).toSec();
-				if(transform_dt > tf2_buffer_.getCacheLength().toSec())
+				if(transform_dt > tf2_buffer_ptr_.getCacheLength().toSec())
 				{
 					HAF_WARN_THROTTLE(1, "Saw a negative time change in trans.stamp %+.3fs", -transform_dt);
 					return;

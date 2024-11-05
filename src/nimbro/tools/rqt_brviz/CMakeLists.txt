@@ -16,6 +16,10 @@ catkin_package(
 )
 catkin_python_setup()
 
+# find python interpreter
+find_package(PythonInterp 3 REQUIRED)
+
+
 find_package(Qt4 COMPONENTS QtCore QtGui REQUIRED)
 include(${QT_USE_FILE})
 

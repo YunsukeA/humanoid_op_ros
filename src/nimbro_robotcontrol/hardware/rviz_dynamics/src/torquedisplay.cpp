@@ -108,7 +108,7 @@ void TorqueDisplay::update(float wall_dt, float ros_dt)
 
 	for(size_t i = 0; i < jointValue->size(); ++i)
 	{
-		boost::shared_ptr<const urdf::Joint> joint = m_model->getJoint(jointName->at(i));
+		std::shared_ptr<const urdf::Joint> joint = m_model->getJoint(jointName->at(i));
 		if(!joint)
 			continue;
 
