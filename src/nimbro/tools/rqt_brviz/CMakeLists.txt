@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(rqt_brviz)
 # Load catkin and all dependencies required for this package
+cmake_policy(SET CMP0167 NEW)
+cmake_policy(SET CMP0148 NEW)
 
 find_package(Boost REQUIRED COMPONENTS program_options)
 include_directories(${Boost_INCLUDE_DIRS})

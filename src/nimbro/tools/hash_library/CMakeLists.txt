@@ -4,6 +4,9 @@ project(hash_library)
 include_directories(${catkin_INCLUDE_DIRS} ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(include)
 
+find_package(catkin REQUIRED COMPONENTS
+)
+
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES hash_library

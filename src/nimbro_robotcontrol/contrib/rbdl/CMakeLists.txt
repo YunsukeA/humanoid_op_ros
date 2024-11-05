@@ -24,6 +24,9 @@ find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
 
 # Copy rbdl_config.h to devel prefix to comply with ROS standards
+find_package(RBDL REQUIRED)
+include_directories(${RBDL_INCLUDE_DIRS})
+
 add_custom_command(
 	OUTPUT "${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION}/rbdl_config.h"
 	DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/source/include/rbdl/rbdl_config.h"

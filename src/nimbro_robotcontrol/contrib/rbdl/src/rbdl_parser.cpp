@@ -141,7 +141,7 @@ void URDF_RBDL_Model::processReverse(const urdf::Link& link, unsigned int parent
 
 	if(parentLink)
 	{
-		child_joint = parentLink->parent_joint;
+		std::shared_ptr<urdf::Joint> child_joint = parentLink->parent_joint;
 		tf = toRBDL(child_joint->parent_to_joint_origin_transform);
 	}
 	else
@@ -252,7 +252,7 @@ void URDF_RBDL_Model::processReverse(const urdf::Link& link, unsigned int parent
 		process(*link.child_links[i], id, tf);
 	}
 
-	boost::shared_ptr<urdf::Link> urdfParent = link.getParent();
+	std::shared_ptr<urdf::Link> urdfParent = link.getParent();
 	if(urdfParent)
 		processReverse(*urdfParent, id, &link, tf);
 }
@@ -274,11 +274,11 @@ bool URDF_RBDL_Model::initFrom(const urdf::Model& model, const std::string& root
 	// Set gravity to ROS standards
 	gravity << 0, 0, -9.81;
 
-	std::vector<boost::shared_ptr<urdf::Link> > links;
+	std::vector<std::shared_ptr<urdf::Link> > links;
 	model.getLinks(links);
 
-	boost::shared_ptr<const urdf::Link> oldRoot = model.getRoot();
-	boost::shared_ptr<const urdf::Link> newRoot = model.getLink(root);
+	std::shared_ptr<const urdf::Link> oldRoot = model.getRoot();
+	std::shared_ptr<const urdf::Link> newRoot = model.getLink(root);
 
 	if(oldRoot == newRoot || !newRoot)
 		process(*oldRoot, 0, Math::SpatialTransform());

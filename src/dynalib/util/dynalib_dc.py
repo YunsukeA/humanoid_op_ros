@@ -72,7 +72,7 @@ class Device:
 			elif tokens[0] == "type":
 				self.reg(int(tokens[1])).type = tokens[2]
 			else:
-				raise RuntimeError, "Unknown command '%s'" % tokens[0]
+				raise RuntimeError("Unknown command '%s'" % tokens[0])
 
 	def sanitizeRegisters(self):
 		self.regs.sort()

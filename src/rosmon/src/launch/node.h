@@ -8,6 +8,8 @@
 #include <map>
 
 #include <ros/time.h>
+#include <memory>
+#include <random>
 
 namespace rosmon
 {

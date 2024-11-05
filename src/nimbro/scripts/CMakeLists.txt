@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8.4)
 project(scripts)
 
+find_package(catkin REQUIRED)
 catkin_package()
 
 install(PROGRAMS changeRobot.py filecheck.py set_camera.py set_cm7X0.py set_netUdev.py fix_ssh_speed.py dynarecover.py install_openfec.sh
